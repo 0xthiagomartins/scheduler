@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  scheduler:
+    build:
+      context: .
+    container_name: auth
+    environment:
+      - RABBIT_PROTOCOL=${RABBIT_PROTOCOL}
+      - RABBIT_USER=${RABBIT_USER}
+      - RABBIT_PASSWORD=${RABBIT_PASSWORD}
+      - RABBIT_HOST=${RABBITMQ_IP_ADDRESS}
+      - RABBIT_PORT=${RABBIT_PORT}
+      - IN_MEMORY_STATE_HOST=${IN_MEMORY_STATE_HOST}
+      - IN_MEMORY_STATE_PORT=${IN_MEMORY_STATE_PORT}
+      - GRAYLOG_HOST=${GRAYLOG_HOST}
+      - GRAYLOG_PORT=${GRAYLOG_PORT}
+      - GRAYLOG_LOG_LEVEL=INFO
+      - GRAYLOG_FACILITY=Auth
+    restart: always
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
