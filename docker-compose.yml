@@ -3,7 +3,7 @@ services:
   scheduler:
     build:
       context: .
-    container_name: auth
+    container_name: scheduler
     environment:
       - RABBIT_PROTOCOL=${RABBIT_PROTOCOL}
       - RABBIT_USER=${RABBIT_USER}
